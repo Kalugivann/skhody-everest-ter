@@ -629,6 +629,7 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
 (function(){
   // GitHub Pages copy: заявка йде у форму skhody-lead на Netlify
   var ENDPOINT='https://skhody-everest-ter.netlify.app/';
+  const SHEET_URL='https://script.google.com/macros/s/AKfycbzs2b6RCAOIOPjaPuvjLfwi8lDv__LTKoYJgiMxUiLG2u2BBl6_DDDPCvRtLDRoKBKA/exec'; // Google-таблиця «Сходи Еверест-Тер · Заявки» + Telegram
   function ck(n){const m=document.cookie.match('(?:^|; )'+n+'=([^;]*)');return m?decodeURIComponent(m[1]):'';}
   document.getElementById('page_url').value=location.href.split('#')[0];
   setTimeout(()=>{document.getElementById('fbp').value=ck('_fbp');let fc=ck('_fbc');const cl=new URLSearchParams(location.search).get('fbclid');if(!fc&&cl)fc='fb.1.'+Date.now()+'.'+cl;document.getElementById('fbc').value=fc;},1500);
@@ -671,6 +672,7 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
     const pref=String(data.get('pref')||'Дзвінок');data.delete('pref');
     if(pref!=='Дзвінок')data.set('name',nm+' · '+pref);
     const body=new URLSearchParams(data).toString();
+    fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body}).catch(()=>{});
     // no-cors: відповідь непрозора, тому не перевіряємо r.ok — успіх = запит пішов
     fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body})
       .then(()=>{
