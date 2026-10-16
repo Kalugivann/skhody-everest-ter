@@ -16,6 +16,8 @@ fbq('init','3220154751626599');fbq('track','PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=3220154751626599&ev=PageView&noscript=1"></noscript>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://img2.creatium.app" crossorigin>
+<link rel="preload" as="image" href="https://img2.creatium.app/5c/8f/ee/74f36761536ad930105213168a2af1be85/1.jpg" fetchpriority="high">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@500;700;800&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
 <style>
 /* Layout: steel-and-oak — graphite bands alternate with pale steel; oak accent only on actions; stepped rhythm echoes treads */
@@ -36,24 +38,25 @@ fbq('init','3220154751626599');fbq('track','PageView');
   --steel:#0c1013; --steel-ink:#e6eaec; --oak:#d9913f; --oak-ink:#160e04; --oak-soft:#3a2a17;
   --bad:#e08a70; --good:#7cc7a2; --note:#3b3310; --note-ink:#f1e2a0; color-scheme:dark}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font:400 1rem/1.6 var(--f-body);padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+/* 17px base: audience 35–55 reads, not scans */
+body{background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 var(--f-body);padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
 @media (min-width:860px){body{padding-bottom:0}}
 .wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 section{padding-block:clamp(48px,8vw,88px)}
 h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.15}
 h1{font-size:clamp(1.75rem,4.4vw,3rem);font-weight:800;letter-spacing:-.01em}
 h2{font-size:clamp(1.5rem,3.2vw,2.25rem);font-weight:700}
-h3{font-size:1.1rem;font-weight:700}
+h3{font-size:1.15rem;font-weight:700}
 p{margin:0}
-.eyebrow{font:500 .78rem/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.lead{color:var(--muted);max-width:62ch;font-size:1.08rem}
+.eyebrow{font:500 .8rem/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lead{color:var(--muted);max-width:62ch;font-size:1.1rem}
 .stack{display:flex;flex-direction:column;gap:16px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--oak);color:var(--oak-ink);font:600 1.02rem/1.2 var(--f-body);padding:16px 26px;border-radius:6px;border:0;text-decoration:none;cursor:pointer;min-height:52px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--oak);color:var(--oak-ink);font:600 1.05rem/1.2 var(--f-body);padding:16px 26px;border-radius:6px;border:0;text-decoration:none;cursor:pointer;min-height:52px;touch-action:manipulation;transition:filter .15s ease}
 .btn:hover{filter:brightness(1.06)}
+.btn:disabled{opacity:.6;cursor:progress}
 .btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--oak);outline-offset:2px}
-.ticks{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--muted);font-size:.92rem;list-style:none;padding:0;margin:0}
+.ticks{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--muted);font-size:.95rem;list-style:none;padding:0;margin:0}
 .ticks li::before{content:"✔ ";color:var(--good)}
-.note{background:var(--note);color:var(--note-ink);font:500 .82rem/1.45 var(--f-mono);padding:8px 12px;border-radius:4px}
 .dark{background:var(--steel);color:var(--steel-ink)}
 .dark .lead,.dark .eyebrow{color:color-mix(in srgb,var(--steel-ink) 70%,transparent)}
 
@@ -62,10 +65,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:co
 header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px}
 .logo{font:800 1.05rem/1 var(--f-display);letter-spacing:.02em}
 .logo small{display:block;font:500 .7rem/1.4 var(--f-mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
-.contacts{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
-.phone{font:600 .98rem/1 var(--f-body);color:var(--ink);text-decoration:none;white-space:nowrap}
-.chip{font:600 .78rem/1 var(--f-body);padding:8px 10px;border:1px solid var(--line);border-radius:999px;color:var(--ink);text-decoration:none}
-@media (max-width:520px){.chip{display:none}}
+.chip{font:600 .85rem/1 var(--f-body);padding:10px 14px;min-height:40px;display:inline-flex;align-items:center;border:1px solid var(--oak);border-radius:999px;color:var(--ink);text-decoration:none;white-space:nowrap}
 
 /* hero */
 .hero{padding-block:clamp(28px,6vw,64px)}
@@ -73,8 +73,6 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1
 .hero .text{display:flex;flex-direction:column;gap:20px;min-width:0}
 .geo{display:inline-flex;gap:8px;align-items:center;font:600 .9rem/1 var(--f-body);background:var(--oak-soft);color:var(--ink);padding:8px 12px;border-radius:999px;align-self:flex-start}
 .photo{aspect-ratio:4/5;max-width:100%;background:linear-gradient(160deg,var(--paper),var(--line));border-radius:8px;position:relative;overflow:hidden;border:1px solid var(--line)}
-.photo svg{position:absolute;inset:0;width:100%;height:100%}
-.photo span{position:absolute;left:12px;bottom:12px;right:12px}
 @media (max-width:860px){.hero .grid{grid-template-columns:1fr}.photo{aspect-ratio:16/10}}
 
 /* trust */
@@ -83,7 +81,7 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1
 .trust .cell{padding:20px 16px;display:flex;flex-direction:column;gap:4px;border-left:1px solid var(--line)}
 .trust .cell:first-child{border-left:0}
 .num{font:800 clamp(1.5rem,3vw,2rem)/1 var(--f-display);font-variant-numeric:tabular-nums}
-.cap{color:var(--muted);font-size:.9rem;line-height:1.35}
+.cap{color:var(--muted);font-size:.95rem;line-height:1.35}
 @media (max-width:700px){.trust .row{grid-template-columns:1fr 1fr}.trust .cell:nth-child(3){border-left:0}.trust .cell:nth-child(n+3){border-top:1px solid var(--line)}}
 
 /* pains */
@@ -91,18 +89,26 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1
 @media (max-width:900px){.cards{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.cards{grid-template-columns:1fr}}
 .pain{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:20px;display:flex;flex-direction:column;gap:8px}
-.pain q{font:700 1.02rem/1.35 var(--f-display);quotes:"«" "»"}
-.pain p{color:var(--muted);font-size:.95rem}
+.pain q{font:700 1.05rem/1.35 var(--f-display);quotes:"«" "»"}
+.pain p{color:var(--muted);font-size:.98rem}
 .after{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;justify-content:space-between;margin-top:28px;padding:20px;border:1px dashed var(--line);border-radius:6px}
 .after p{max-width:60ch}
 
-/* solution table */
-.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
-table{border-collapse:collapse;width:100%;min-width:640px}
-th,td{text-align:left;padding:16px;vertical-align:top;border-top:1px solid var(--line);font-size:.96rem}
-thead th{border-top:0;font:500 .75rem/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-td:first-child{color:var(--bad)}
+/* solution table → cards on mobile (no horizontal scroll) */
+.tbl{border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;padding:16px;vertical-align:top;border-top:1px solid var(--line);font-size:1rem}
+thead th{border-top:0;font:500 .78rem/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td:first-child{color:var(--bad);font-weight:600}
 td:last-child{font-weight:600}
+@media (max-width:700px){
+  .tbl{border:0;background:none}
+  table,tbody,tr,td{display:block;width:100%}
+  thead{display:none}
+  tr{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:14px 16px;margin-bottom:12px}
+  td{border:0;padding:6px 0}
+  td::before{content:attr(data-l);display:block;font:500 .72rem/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+}
 
 /* mistakes */
 .mistakes{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);align-items:start}
@@ -110,8 +116,8 @@ td:last-child{font-weight:600}
 .mlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0;counter-reset:m}
 .mlist li{counter-increment:m;display:grid;grid-template-columns:44px 1fr;gap:4px 14px;padding:18px 0;border-top:1px solid color-mix(in srgb,var(--steel-ink) 18%,transparent)}
 .mlist li::before{content:counter(m);grid-row:span 2;font:800 1.6rem/1 var(--f-display);color:var(--oak)}
-.mlist b{font-family:var(--f-display);font-size:1.02rem}
-.mlist span{color:color-mix(in srgb,var(--steel-ink) 78%,transparent);font-size:.95rem}
+.mlist b{font-family:var(--f-display);font-size:1.05rem}
+.mlist span{color:color-mix(in srgb,var(--steel-ink) 80%,transparent);font-size:.98rem}
 .mlist em{font-style:normal;color:var(--oak)}
 .diagram{background:color-mix(in srgb,var(--steel-ink) 6%,transparent);border-radius:8px;padding:16px}
 .diagram svg{width:100%;height:auto;display:block}
@@ -121,14 +127,13 @@ td:last-child{font-weight:600}
 @media (max-width:900px){.types{grid-template-columns:repeat(2,1fr)}}
 .type{border:1px solid var(--line);border-radius:6px;background:var(--paper);padding:16px;display:flex;flex-direction:column;gap:10px}
 .type svg{width:100%;height:auto;aspect-ratio:4/3;max-width:100%}
-.type p{color:var(--muted);font-size:.9rem}
+.type p{color:var(--muted);font-size:.95rem}
 
 /* steps */
 .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:0}
-.steps li{padding:20px 16px 20px 0;display:flex;flex-direction:column;gap:8px;position:relative}
+.steps li{padding:20px 16px 20px 0;display:flex;flex-direction:column;gap:8px;position:relative;border-top:3px solid var(--oak)}
 .steps .n{font:500 .78rem/1 var(--f-mono);letter-spacing:.08em;color:var(--oak)}
-.steps p{font-size:.94rem;color:color-mix(in srgb,var(--steel-ink) 78%,transparent)}
-.steps li{border-top:3px solid var(--oak)}
+.steps p{font-size:.98rem;color:color-mix(in srgb,var(--steel-ink) 80%,transparent)}
 .steps li:nth-child(1){margin-top:64px}.steps li:nth-child(2){margin-top:48px}.steps li:nth-child(3){margin-top:32px}.steps li:nth-child(4){margin-top:16px}
 .days{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
 .days span{font:500 .75rem/1 var(--f-mono);padding:6px 8px;border:1px solid color-mix(in srgb,var(--steel-ink) 30%,transparent);border-radius:4px}
@@ -150,21 +155,50 @@ td:last-child{font-weight:600}
 .guar li{display:grid;grid-template-columns:24px 1fr;gap:10px}
 .guar li::before{content:"✔";color:var(--good);font-weight:800}
 
-/* works & reviews */
-.works{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+/* works */
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 @media (max-width:860px){.works{grid-template-columns:1fr 1fr}}
-.work{aspect-ratio:3/4;max-width:100%;border-radius:6px;background:linear-gradient(170deg,var(--paper),var(--line));border:1px solid var(--line);display:flex;align-items:flex-end;padding:10px;font:500 .78rem/1.3 var(--f-mono);color:var(--muted)}
-.reviews{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}
+.work{margin:0;aspect-ratio:3/4;max-width:100%;border-radius:6px;background:linear-gradient(170deg,var(--paper),var(--line));border:1px solid var(--line);overflow:hidden;position:relative}
+.work figcaption{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 10px;font:600 .9rem/1.3 var(--f-body);color:#fff;background:linear-gradient(to top,rgba(0,0,0,.72),rgba(0,0,0,0))}
+
+/* before / after */
+.ba-tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.ba-tabs::-webkit-scrollbar{display:none}
+.ba-tabs button{flex:0 0 auto;font:600 .9rem/1 var(--f-body);padding:12px 14px;min-height:44px;border-radius:999px;border:1px solid color-mix(in srgb,var(--steel-ink) 30%,transparent);background:transparent;color:var(--steel-ink);cursor:pointer}
+.ba-tabs button[aria-selected="true"]{background:var(--oak);border-color:var(--oak);color:var(--oak-ink)}
+.ba{position:relative;width:100%;max-width:760px;aspect-ratio:4/5;border-radius:8px;overflow:hidden;background:#0c1013;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:ew-resize}
+@media (min-width:860px){.ba{aspect-ratio:4/3}}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba-before{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.ba-line{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.25);pointer-events:none}
+.ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:#fff;color:#1c2328;display:flex;align-items:center;justify-content:center;font:700 1rem/1 var(--f-body);box-shadow:0 2px 10px rgba(0,0,0,.35)}
+.ba-tag{position:absolute;top:12px;font:600 .8rem/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;padding:8px 10px;border-radius:4px;background:rgba(0,0,0,.6);color:#fff;pointer-events:none}
+.ba-tag.l{left:12px}.ba-tag.r{right:12px}
+.ba-range{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;cursor:ew-resize;pointer-events:none}
+.ba-range:focus-visible~.ba-line .ba-knob,.ba:focus-within .ba-knob{outline:3px solid var(--oak);outline-offset:2px}
+.ba-cap{font-weight:600}
+
+/* reviews */
+.reviews{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 @media (max-width:900px){.reviews{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.reviews{grid-template-columns:1fr}}
-.review{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:18px;display:flex;flex-direction:column;gap:10px}
-.review b{font-family:var(--f-display)}
+.review{margin:0;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+.review blockquote{margin:0;font-size:1rem;line-height:1.55}
+.review figcaption{font:700 1rem/1.2 var(--f-display)}
+.shots{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;align-items:start}
+@media (max-width:860px){.shots{grid-template-columns:1fr 1fr}}
+.shot{padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--bg);cursor:zoom-in;display:block;width:100%}
+.shot img{width:100%;height:auto}
+dialog#zoom{padding:0;border:0;border-radius:8px;max-width:min(92vw,900px);max-height:90vh;background:#000}
+dialog#zoom::backdrop{background:rgba(0,0,0,.75)}
+dialog#zoom img{max-width:100%;max-height:90vh;width:auto;height:auto;display:block}
+.zclose{position:absolute;top:8px;right:8px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.9);font-size:1.1rem;cursor:pointer}
 
 /* faq */
 .faq{max-width:760px;display:flex;flex-direction:column;gap:0}
 details{border-top:1px solid var(--line);padding:4px 0}
 details:last-child{border-bottom:1px solid var(--line)}
-summary{cursor:pointer;list-style:none;padding:16px 32px 16px 0;font:700 1.02rem/1.35 var(--f-display);position:relative}
+summary{cursor:pointer;list-style:none;padding:16px 32px 16px 0;font:700 1.05rem/1.35 var(--f-display);position:relative}
 summary::-webkit-details-marker{display:none}
 summary::after{content:"+";position:absolute;right:4px;top:12px;font:400 1.5rem/1 var(--f-body);color:var(--oak)}
 details[open] summary::after{content:"–"}
@@ -175,21 +209,25 @@ details p{padding:0 0 18px;color:var(--muted);max-width:65ch}
 @media (max-width:860px){.formbox{grid-template-columns:1fr}}
 form{background:var(--paper);color:var(--ink);border-radius:8px;padding:clamp(18px,3vw,28px);display:flex;flex-direction:column;gap:18px}
 fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;min-width:0}
-legend{font:700 .98rem/1.3 var(--f-display);margin-bottom:6px;padding:0}
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-@media (max-width:480px){.opts{grid-template-columns:1fr}}
+legend{font:700 1rem/1.3 var(--f-display);margin-bottom:6px;padding:0}
 .opt{position:relative}
 .opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
-.opt span{display:block;padding:12px 14px;border:1px solid var(--line);border-radius:6px;font-size:.93rem;line-height:1.3;background:var(--bg)}
+.opt span{display:block;padding:14px;border:1px solid var(--line);border-radius:6px;font-size:1rem;line-height:1.3;background:var(--bg);min-height:48px}
 .opt input:checked+span{border-color:var(--oak);background:var(--oak-soft);font-weight:600}
 .opt input:focus-visible+span{outline:3px solid var(--oak);outline-offset:2px}
-label.f{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:.93rem}
-input[type=text],input[type=tel]{font:500 1rem/1.2 var(--f-body);padding:14px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);width:100%}
-.err{color:var(--bad);font-size:.88rem;min-height:1.2em}
-.legal{color:var(--muted);font-size:.8rem}
+label.f{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:.98rem}
+input[type=text],input[type=tel]{font:500 1.05rem/1.2 var(--f-body);padding:14px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);width:100%;min-height:50px}
+.pref{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pref .opt span{text-align:center;padding:12px 6px}
+.pref-l{font-weight:600;font-size:.98rem}
+.err{color:var(--bad);font-size:.92rem;min-height:1.2em}
+.assure{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.88rem;color:var(--muted);list-style:none;margin:0;padding:0}
+.assure li::before{content:"✔ ";color:var(--good)}
+.legal{color:var(--muted);font-size:.85rem}
 .thanks{background:var(--paper);color:var(--ink);border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:12px}
+.thanks p{color:var(--muted)}
 
-footer{padding-block:32px;border-top:1px solid var(--line);font-size:.9rem;color:var(--muted)}
+footer{padding-block:32px;border-top:1px solid var(--line);font-size:.92rem;color:var(--muted)}
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between}
 
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--paper);border-top:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:flex;gap:10px}
@@ -202,14 +240,14 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
 
 /* step form */
 .qhead{display:flex;flex-direction:column;gap:8px}
-.qcount{font:500 .78rem/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.qcount{font:500 .8rem/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .qbar{height:4px;background:var(--line);border-radius:2px;overflow:hidden}
 .qbar i{display:block;height:100%;width:25%;background:var(--oak);transition:width .25s ease}
 .qstep{display:flex;flex-direction:column;gap:14px;border:0;margin:0;padding:0;min-width:0}
-.qstep legend{font:700 1.15rem/1.3 var(--f-display);padding:0;margin-bottom:4px}
+.qstep>legend{font:700 1.2rem/1.3 var(--f-display);padding:0;margin-bottom:4px}
 .qopts{display:grid;grid-template-columns:1fr;gap:8px}
 .qnav{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.qback{background:none;border:0;color:var(--muted);font:500 .92rem/1 var(--f-body);cursor:pointer;padding:8px 0}
+.qback{background:none;border:0;color:var(--muted);font:500 .95rem/1 var(--f-body);cursor:pointer;padding:12px 0;min-height:44px}
 .qback:hover{color:var(--ink)}
 .out{background:var(--paper);color:var(--ink);border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:12px}
 .out p{color:var(--muted)}
@@ -221,7 +259,7 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
 <header>
   <div class="wrap">
     <div class="logo">ЕВЕРЕСТ-ТЕР<small>сходи під ключ · Тернопіль</small></div>
-    <div class="contacts"><a class="chip" style="display:inline-block" href="#form">Консультація</a></div>
+    <a class="chip" href="#form">Безкоштовна консультація</a>
   </div>
 </header>
 
@@ -235,9 +273,9 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
       <h1>Сходи під ключ від виробника в Тернополі — до 3 місяців, з ціною в договорі</h1>
       <p class="lead">Розраховуємо сходи під вашу чистову підлогу, отвір і графік ремонту. Каркас, дерево й перила робить один виконавець. Орієнтовний бюджет назвемо вже на безкоштовній консультації.</p>
       <div><a class="btn" href="#form">Отримати консультацію й орієнтовний бюджет</a></div>
-      <ul class="ticks"><li>Дзвінок протягом 5 хв у робочий час</li><li>Без зобов'язань</li><li>Тернопіль і область</li></ul>
+      <ul class="ticks"><li>Дзвінок протягом 5 хв у робочий час</li><li>Без зобов'язань</li><li>20 років гарантії на каркас</li></ul>
     </div>
-    <div class="photo"><img src="https://img2.creatium.app/5c/8f/ee/74f36761536ad930105213168a2af1be85/1.jpg" alt="Сходи на металевому каркасі з дерев'яними сходинками від Еверест-Тер" fetchpriority="high"></div>
+    <div class="photo"><img src="https://img2.creatium.app/5c/8f/ee/74f36761536ad930105213168a2af1be85/1.jpg" alt="Сходи на металевому каркасі з дерев'яними сходинками від Еверест-Тер" fetchpriority="high" decoding="async"></div>
   </div>
 </section>
 
@@ -274,23 +312,23 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
     <div class="tbl"><table>
       <thead><tr><th>Що хвилює</th><th>Що робимо</th><th>Що отримуєте</th></tr></thead>
       <tbody>
-        <tr><td>Коли замовляти</td><td>Консультуємо на будь-якому етапі: від коробки без стяжки до заміни старих сходів</td><td>План, що зробити зараз, щоб потім не переробляти</td></tr>
-        <tr><td>Перша сходинка вища</td><td>Рахуємо від рівня чистової підлоги — плитки, дошки, теплої підлоги</td><td>Усі сходинки однієї висоти</td></tr>
-        <tr><td>Ціна зміниться</td><td>Фіксуємо ціну і строки в договорі</td><td>Бюджет, що не змінюється після підписання</td></tr>
-        <tr><td>Стане ремонт</td><td>Каркас ставимо ще під час ремонту, дерев'яну частину й перила — після його завершення</td><td>Сходи до 3 місяців, і ремонт не чекає на сходи</td></tr>
-        <tr><td>Безпека родини</td><td>Розраховуємо сходинки й огородження під вашу родину: глибина сходинки від 25 см, перила від 90 см</td><td>Для дітей — огородження 1,2 м і стійки через 10 см</td></tr>
-        <tr><td>Кілька підрядників</td><td>Каркас, дерево й перила — на одному виробництві</td><td>Одна компанія відповідає за весь результат</td></tr>
+        <tr><td data-l="Що хвилює">Коли замовляти</td><td data-l="Що робимо">Консультуємо на будь-якому етапі: від коробки без стяжки до заміни старих сходів</td><td data-l="Що отримуєте">План, що зробити зараз, щоб потім не переробляти</td></tr>
+        <tr><td data-l="Що хвилює">Перша сходинка вища</td><td data-l="Що робимо">Рахуємо від рівня чистової підлоги — плитки, дошки, теплої підлоги</td><td data-l="Що отримуєте">Усі сходинки однієї висоти</td></tr>
+        <tr><td data-l="Що хвилює">Ціна зміниться</td><td data-l="Що робимо">Фіксуємо ціну і строки в договорі</td><td data-l="Що отримуєте">Бюджет, що не змінюється після підписання</td></tr>
+        <tr><td data-l="Що хвилює">Стане ремонт</td><td data-l="Що робимо">Каркас ставимо ще під час ремонту, дерев'яну частину й перила — після його завершення</td><td data-l="Що отримуєте">Сходи до 3 місяців, і ремонт не чекає на сходи</td></tr>
+        <tr><td data-l="Що хвилює">Безпека родини</td><td data-l="Що робимо">Розраховуємо сходинки й огородження під вашу родину: глибина сходинки від 25 см, перила від 90 см</td><td data-l="Що отримуєте">Для дітей — огородження 1,2 м і стійки через 10 см</td></tr>
+        <tr><td data-l="Що хвилює">Кілька підрядників</td><td data-l="Що робимо">Каркас, дерево й перила — на одному виробництві</td><td data-l="Що отримуєте">Одна компанія відповідає за весь результат</td></tr>
       </tbody>
     </table></div>
     <div><a class="btn" href="#form">Отримати орієнтовний бюджет</a></div>
   </div>
 </section>
 
-<!-- 5 MISTAKES (continues carousel) -->
+<!-- 5 MISTAKES -->
 <section class="dark">
   <div class="wrap mistakes">
     <div class="stack">
-      <p class="eyebrow">Продовження нашої каруселі</p>
+      <p class="eyebrow">Що найчастіше переробляють</p>
       <h2>5 помилок, через які сходи переробляють</h2>
       <p class="lead">Ці помилки помітні не одразу. Їх видно, коли ремонт уже закінчено.</p>
       <div class="diagram" aria-label="Схема: різниця висоти першої сходинки через чистову підлогу">
@@ -376,7 +414,6 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
       <p class="eyebrow">Про виробництво</p>
       <h2>Еверест-Тер виготовляє сходи в Тернополі з 2008 року</h2>
       <p class="lead">Понад 600 проєктів сходів у Тернополі та області. Каркас, дерев'яну частину й перила робимо на власному виробництві, тому за весь результат відповідає одна компанія.</p>
-      
     </div>
     <div class="guar">
       <h2 style="font-size:clamp(1.3rem,2.6vw,1.8rem)">Ціна і строки — у договорі, а не на словах</h2>
@@ -390,13 +427,66 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
   </div>
 </section>
 
-<!-- 10 WORKS + REVIEWS -->
+<!-- 9b BEFORE / AFTER -->
+<section class="dark" id="ba">
+  <div class="wrap stack" style="gap:24px">
+    <div class="stack"><p class="eyebrow">Реалізовані проєкти</p><h2>До і після: проведіть пальцем по фото</h2></div>
+    <div class="ba-tabs" role="tablist" aria-label="Оберіть проєкт">
+      <button type="button" role="tab" aria-selected="true" data-i="0">Г-подібні, відкриті</button>
+      <button type="button" role="tab" aria-selected="false" data-i="1">З хвірткою</button>
+      <button type="button" role="tab" aria-selected="false" data-i="2">З металевими перилами</button>
+      <button type="button" role="tab" aria-selected="false" data-i="3">Закриті, з підсходинкою</button>
+      <button type="button" role="tab" aria-selected="false" data-i="4">Закриті, з підсвіткою</button>
+      <button type="button" role="tab" aria-selected="false" data-i="5">Відкриті</button>
+    </div>
+    <div class="ba" id="baBox" style="--pos:50%">
+      <img class="ba-after" id="baAfter" alt="Після: готові сходи Еверест-Тер" decoding="async">
+      <div class="ba-before"><img id="baBefore" alt="До: отвір без сходів" decoding="async"></div>
+      <span class="ba-tag l">До</span><span class="ba-tag r">Після</span>
+      <div class="ba-line" aria-hidden="true"><span class="ba-knob">‹ ›</span></div>
+      <input class="ba-range" id="baRange" type="range" min="0" max="100" value="50" aria-label="Порівняти фото до і після">
+    </div>
+    <p class="ba-cap" id="baCap">Відкрита форма Г-подібних сходів</p>
+    <div><a class="btn" href="#form">Хочу так само у своєму будинку</a></div>
+  </div>
+</section>
+
+<!-- 10 WORKS -->
 <section>
   <div class="wrap stack" style="gap:24px">
     <div class="stack"><p class="eyebrow">Наші роботи</p><h2>Частина з 600+ проєктів сходів</h2></div>
-    <div class="works"><div class="work" style="padding:0;overflow:hidden"><img src="https://img2.creatium.app/disk2/69/49/76/f33f3497d15ad401ddb4df0b583cf3bdeb/img_02f213ea140de7dc3784ead83c54aefa_v_2_2.jpg" alt="Сходи від Еверест-Тер" loading="lazy"></div><div class="work" style="padding:0;overflow:hidden"><img src="https://img2.creatium.app/disk2/8a/02/ae/8bdf049f7e75c51be336275ce0d8efb20e/0_02_05_cfe0e12e057aad09b23c26c4ed952215115b7a4a75b349445061.jpg" alt="Сходи від Еверест-Тер" loading="lazy"></div><div class="work" style="padding:0;overflow:hidden"><img src="https://img2.creatium.app/disk2/b0/d3/bc/78b71afba80f7c9e3d80736b76bd2ffd9e/zobrajennya_viber_2022_11_15_14_52_25_622.jpg" alt="Сходи від Еверест-Тер" loading="lazy"></div><div class="work" style="padding:0;overflow:hidden"><img src="https://img2.creatium.app/disk2/f0/9c/c6/c9dd313eb025f6249009060850005a44b9/img_42e1a5cc8ce3537b17294d13431bc613_v_1.jpg" alt="Сходи від Еверест-Тер" loading="lazy"></div></div>
+    <div class="works">
+      <figure class="work"><img src="https://img2.creatium.app/5c/8f/ee/74f36761536ad930105213168a2af1be85/1.jpg" alt="Прямі сходи на металевому каркасі від Еверест-Тер" loading="lazy" decoding="async"><figcaption>Прямий марш</figcaption></figure>
+      <figure class="work"><img src="https://img2.creatium.app/disk2/b0/d3/bc/78b71afba80f7c9e3d80736b76bd2ffd9e/zobrajennya_viber_2022_11_15_14_52_25_622.jpg" alt="П-подібні сходи з поворотом на 180° від Еверест-Тер" loading="lazy" decoding="async"><figcaption>П-подібні · поворот на 180°</figcaption></figure>
+      <figure class="work"><img src="https://img2.creatium.app/disk2/f0/9c/c6/c9dd313eb025f6249009060850005a44b9/img_42e1a5cc8ce3537b17294d13431bc613_v_1.jpg" alt="Г-подібні сходи з поворотом на 90° від Еверест-Тер" loading="lazy" decoding="async"><figcaption>Г-подібні · поворот на 90°</figcaption></figure>
+      <figure class="work"><img src="https://img2.creatium.app/disk2/8a/02/ae/8bdf049f7e75c51be336275ce0d8efb20e/0_02_05_cfe0e12e057aad09b23c26c4ed952215115b7a4a75b349445061.jpg" alt="Сходи на металевому каркасі в стилі лофт від Еверест-Тер" loading="lazy" decoding="async"><figcaption>У стилі лофт</figcaption></figure>
+      <figure class="work"><img src="https://img2.creatium.app/disk2/69/49/76/f33f3497d15ad401ddb4df0b583cf3bdeb/img_02f213ea140de7dc3784ead83c54aefa_v_2_2.jpg" alt="Виконані сходи Еверест-Тер на металевому каркасі з дерев'яними сходинками" loading="lazy" decoding="async"><figcaption>Каркас + дерево + перила</figcaption></figure>
+      <figure class="work"><img src="https://img2.creatium.app/disk2/c8/70/04/7602722bd971a0206c6a703b2489180003/img_c1e0c859a4d3b631eb00b47011044359_v_1_1.jpg" alt="Сходи Еверест-Тер в інтер'єрі будинку" loading="lazy" decoding="async"><figcaption>Сходи під ключ</figcaption></figure>
     </div>
+  </div>
 </section>
+
+<!-- 10b REVIEWS -->
+<section style="background:var(--paper)" id="reviews">
+  <div class="wrap stack" style="gap:24px">
+    <div class="stack"><p class="eyebrow">Відгуки клієнтів</p><h2>Що пишуть власники будинків після монтажу</h2></div>
+    <div class="reviews">
+      <figure class="review"><blockquote>«Дякую Вам за хорошу роботу. Дружина задоволена, а це саме головне. Все було на вищому рівні. Дякую Вам і вашим працівникам. Надіюся на подальшу співпрацю!»</blockquote><figcaption>Олександр</figcaption></figure>
+      <figure class="review"><blockquote>«Дякую вам за сходи на 2-ий поверх, дуже зручно ними переміщатися між поверхами. Все зроблено професійно і гарно, жодних зауважень не виникло. Ще раз дякую!»</blockquote><figcaption>Наталя</figcaption></figure>
+      <figure class="review"><blockquote>«Дякую вам за сходи. Все реалізували як я хотіла, дуже дякую. Як щось знову придумаю, обов'язково звернуся до Вас!»</blockquote><figcaption>Світлана</figcaption></figure>
+      <figure class="review"><blockquote>«Ціна = якість. Професіонали своєї справи. Все зробили під ключ без моєї участі, що для мене дуже важливо. Раджу усім!»</blockquote><figcaption>Олексій</figcaption></figure>
+    </div>
+    <h3 style="margin-top:12px">Скріншоти відгуків з Viber</h3>
+    <div class="shots">
+      <button type="button" class="shot" data-full="https://img2.creatium.app/disk2/fd/09/8b/874b04a8ae1eaaa753b78d328c015f3e0b/v_dguk.jpg"><img src="https://img2.creatium.app/disk2/fd/09/8b/874b04a8ae1eaaa753b78d328c015f3e0b/v_dguk.jpg" width="948" height="653" alt="Скріншот відгуку клієнта у Viber" loading="lazy" decoding="async"></button>
+      <button type="button" class="shot" data-full="https://img2.creatium.app/disk2/b0/34/fa/0bee89a92ffe9eea68d7e915addcbac702/v_dguk_20_08.jpg"><img src="https://img2.creatium.app/disk2/b0/34/fa/0bee89a92ffe9eea68d7e915addcbac702/v_dguk_20_08.jpg" width="1080" height="822" alt="Скріншот відгуку клієнта у Viber" loading="lazy" decoding="async"></button>
+      <button type="button" class="shot" data-full="https://img2.creatium.app/disk2/fd/09/4e/72141e41b78475428245eb6447c78b84ff/v_dguki_3.jpg"><img src="https://img2.creatium.app/disk2/fd/09/4e/72141e41b78475428245eb6447c78b84ff/v_dguki_3.jpg" width="576" height="650" alt="Скріншот відгуку клієнта у Viber" loading="lazy" decoding="async"></button>
+      <button type="button" class="shot" data-full="https://img2.creatium.app/disk2/02/b6/93/590d0f42df1740a2883c4dd43bade03f17/v_dguki_1.jpg"><img src="https://img2.creatium.app/disk2/02/b6/93/590d0f42df1740a2883c4dd43bade03f17/v_dguki_1.jpg" width="476" height="132" alt="Скріншот відгуку клієнта у Viber" loading="lazy" decoding="async"></button>
+    </div>
+    <p class="cap">Натисніть на скріншот, щоб відкрити його повністю.</p>
+  </div>
+</section>
+<dialog id="zoom" aria-label="Скріншот відгуку"><button type="button" class="zclose" aria-label="Закрити">✕</button><img id="zoomImg" alt="Скріншот відгуку клієнта у Viber"></dialog>
 
 <!-- 11 FAQ -->
 <section style="background:var(--paper)">
@@ -427,7 +517,7 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
         <li>Яка форма сходів підійде під отвір</li>
         <li>Орієнтовний бюджет і строки</li>
       </ul>
-      <p class="lead">4 короткі питання, менше хвилини. Менеджер зателефонує протягом 5 хвилин у робочий час.</p>
+      <p class="lead">4 короткі питання, менше хвилини. Менеджер зв'яжеться протягом 5 хвилин у робочий час — дзвінком або в месенджері, як вам зручніше.</p>
     </div>
     <div>
       <form id="lead" name="skhody-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
@@ -435,30 +525,39 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
         <p class="hp"><label>Не заповнюйте: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <div class="qhead"><span class="qcount" id="qcount">Питання 1 з 4</span><div class="qbar"><i id="qbar"></i></div></div>
         <fieldset class="qstep" data-step="1"><legend>На якому етапі ваш будинок?</legend><div class="qopts">
-            <label class="opt"><input type="radio" name="stage" id="st1" value="Коробка без стяжки"><span>Коробка без стяжки</span></label>
-            <label class="opt"><input type="radio" name="stage" id="st2" value="Стяжка або тепла підлога вже є"><span>Стяжка або тепла підлога вже є</span></label>
-            <label class="opt"><input type="radio" name="stage" id="st3" value="Чистове оздоблення"><span>Чистове оздоблення</span></label>
-            <label class="opt"><input type="radio" name="stage" id="st4" value="Будинок готовий, міняю сходи"><span>Будинок готовий, міняю сходи</span></label>
+            <label class="opt"><input type="radio" name="stage" value="Коробка без стяжки"><span>Коробка без стяжки</span></label>
+            <label class="opt"><input type="radio" name="stage" value="Стяжка або тепла підлога вже є"><span>Стяжка або тепла підлога вже є</span></label>
+            <label class="opt"><input type="radio" name="stage" value="Чистове оздоблення"><span>Чистове оздоблення</span></label>
+            <label class="opt"><input type="radio" name="stage" value="Будинок готовий, міняю сходи"><span>Будинок готовий, міняю сходи</span></label>
         </div></fieldset>
         <fieldset class="qstep" data-step="2" hidden><legend>Коли плануєте встановити сходи?</legend><div class="qopts">
-            <label class="opt"><input type="radio" name="when" id="w1" value="Протягом місяця"><span>Протягом місяця</span></label>
-            <label class="opt"><input type="radio" name="when" id="w2" value="За 1–3 місяці"><span>За 1–3 місяці</span></label>
-            <label class="opt"><input type="radio" name="when" id="w3" value="Пізніше"><span>Пізніше</span></label>
+            <label class="opt"><input type="radio" name="when" value="Протягом місяця"><span>Протягом місяця</span></label>
+            <label class="opt"><input type="radio" name="when" value="За 1–3 місяці"><span>За 1–3 місяці</span></label>
+            <label class="opt"><input type="radio" name="when" value="Пізніше"><span>Пізніше</span></label>
         </div></fieldset>
         <fieldset class="qstep" data-step="3" hidden><legend>Де розташований будинок?</legend><div class="qopts">
-            <label class="opt"><input type="radio" name="loc" id="loc1" value="Тернопіль"><span>Тернопіль</span></label>
-            <label class="opt"><input type="radio" name="loc" id="loc2" value="Тернопільський район"><span>Тернопільський район</span></label>
-            <label class="opt"><input type="radio" name="loc" id="loc3" value="Інший район Тернопільської області"><span>Інший район Тернопільської області</span></label>
-            <label class="opt"><input type="radio" name="loc" id="loc4" value="Інша область"><span>Інша область</span></label>
+            <label class="opt"><input type="radio" name="loc" value="Тернопіль"><span>Тернопіль</span></label>
+            <label class="opt"><input type="radio" name="loc" value="Тернопільський район"><span>Тернопільський район</span></label>
+            <label class="opt"><input type="radio" name="loc" value="Інший район Тернопільської області"><span>Інший район Тернопільської області</span></label>
+            <label class="opt"><input type="radio" name="loc" value="Інша область"><span>Інша область</span></label>
         </div></fieldset>
-        <fieldset class="qstep" data-step="4" hidden><legend>Куди зателефонувати з орієнтовним бюджетом?</legend>
+        <fieldset class="qstep" data-step="4" hidden><legend>Куди надіслати орієнтовний бюджет?</legend>
           <label class="f" for="name">Ваше ім'я<input type="text" id="name" name="name" autocomplete="given-name"></label>
           <label class="f" for="phone">Телефон<input type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" value="+380 "></label>
+          <div class="stack" style="gap:8px">
+            <span class="pref-l" id="pref-l">Як зручніше зв'язатися?</span>
+            <div class="pref" role="radiogroup" aria-labelledby="pref-l">
+              <label class="opt"><input type="radio" name="pref" value="Дзвінок" checked><span>Дзвінок</span></label>
+              <label class="opt"><input type="radio" name="pref" value="Viber"><span>Viber</span></label>
+              <label class="opt"><input type="radio" name="pref" value="Telegram"><span>Telegram</span></label>
+            </div>
+          </div>
           <button class="btn" type="submit" id="qsubmit">Отримати консультацію й бюджет</button>
-          <p class="legal">Натискаючи кнопку, ви погоджуєтесь з <a href="privacy.html" style="color:inherit">політикою конфіденційності</a> та обробкою даних для зворотного дзвінка.</p>
+          <ul class="assure"><li>Ціна в договорі</li><li>20 років гарантії на каркас</li><li>Без зобов'язань</li></ul>
+          <p class="legal">Натискаючи кнопку, ви погоджуєтесь з <a href="privacy.html" style="color:inherit">політикою конфіденційності</a> та обробкою даних для зворотного зв'язку.</p>
         </fieldset>
         <input type="hidden" id="utm_source" name="utm_source"><input type="hidden" id="utm_campaign" name="utm_campaign"><input type="hidden" id="utm_content" name="utm_content"><input type="hidden" id="event_id" name="event_id"><input type="hidden" id="fbp" name="fbp"><input type="hidden" id="fbc" name="fbc"><input type="hidden" id="page_url" name="page_url">
-        <p class="err" id="err" aria-live="polite"></p>
+        <p class="err" id="err" role="alert" aria-live="polite"></p>
         <div class="qnav"><button type="button" class="qback" id="qback" hidden>← Назад</button></div>
       </form>
       <div class="out" id="out" hidden>
@@ -467,9 +566,10 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
         <p>Якщо будинок усе ж в області, змініть відповідь.</p>
         <div><button type="button" class="btn" id="outback">Змінити відповідь</button></div>
       </div>
-      <div class="thanks" id="thanks" hidden>
+      <div class="thanks" id="thanks" hidden tabindex="-1">
         <h3>Дякуємо, заявку отримали</h3>
-        <p>Менеджер зателефонує протягом 5 хвилин у робочий час з тернопільського номера. Будь ласка, тримайте телефон поруч.</p>
+        <p id="thanks-msg">Менеджер зателефонує протягом 5 хвилин у робочий час з тернопільського номера. Будь ласка, візьміть слухавку, навіть якщо номер незнайомий: це ми з вашим бюджетом.</p>
+        <p>Якщо заявку залишено в неробочий час, зв'яжемося на початку наступного робочого дня.</p>
       </div>
     </div>
   </div>
@@ -484,11 +584,51 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
   </div>
 </footer>
 
-<div class="sticky"><a class="btn" href="#form">Отримати консультацію</a></div>
+<div class="sticky"><a class="btn" href="#form">Отримати консультацію й бюджет</a></div>
 
 <script>
+/* До / після */
 (function(){
-  const SHEET_URL='https://script.google.com/macros/s/AKfycbzs2b6RCAOIOPjaPuvjLfwi8lDv__LTKoYJgiMxUiLG2u2BBl6_DDDPCvRtLDRoKBKA/exec'; // Google-таблиця «Сходи Еверест-Тер · Заявки»
+  var B='https://img2.creatium.app/disk2/';
+  var P=[
+    ['53/6a/56/f2903a095b69dbca95c8ba15886110c166/zobrajennya_viber_2026_10_12_18_35_54_975.jpg','7a/97/c7/6e46cdff14cd362b70c826c45d292ba313/izobrajenie_viber_2025_02_21_15_30_32_357.jpg','Відкрита форма Г-подібних сходів'],
+    ['35/21/8b/e423196c4385ac1f87fe55cc96dce0452a/zobrajennya_viber_2026_10_12_18_35_54_795.jpg','c6/83/ae/7642ca0ee35920267f1e80587a411a2014/photo_2_2024_06_26_22_02_08.jpg','Відкрита форма сходів з хвірткою'],
+    ['15/e6/25/cf0c260d6b7a1d261304dcd568417b3ff7/nedobudovaniy_koridor_z_dverima.png','08/2f/bc/2ac732cc52e951dedbda4e4346cf6b73fa/photo_2024_06_06_19_14_50.jpg','Відкрита форма сходів з металевими перилами'],
+    ['51/6a/b5/c44f1418fe3aa50bbd34fad863f0e93167/v_dkrita_shodova_shahta_p_slya_demontaju_sexleket_y.png','f6/44/74/c0d772514259a4dd18c7e162a16174dc3a/gotov_4.jpg','Закрита форма сходів з додатковою підсходинкою'],
+    ['f4/d4/8a/494e27922d102616986bc4724174e600f7/sv_tliy_m_n_mal_stichniy_koridor_bez_shod_v.png','55/60/7c/502114896ed872152e834d570522d5b813/gotov_5.jpg','Закриті сходи з підсвіткою'],
+    ['e0/3a/92/b463b712e4f637acf5bb42f38da36ed4a7/teksturovaniy_koridor_z_derev_yanimi_dverima.png','68/f9/85/5d433614c2bb3f96d808a14686c620f40c/gp_1.jpg','Відкрита форма сходів']
+  ];
+  var box=document.getElementById('baBox'),rng=document.getElementById('baRange'),
+      bi=document.getElementById('baBefore'),ai=document.getElementById('baAfter'),cap=document.getElementById('baCap'),
+      tabs=[].slice.call(document.querySelectorAll('.ba-tabs button'));
+  if(!box)return;
+  function setPos(p){p=Math.max(0,Math.min(100,p));box.style.setProperty('--pos',p+'%');rng.value=Math.round(p);}
+  function load(i){var p=P[i];bi.src=B+p[0];ai.src=B+p[1];cap.textContent=p[2];setPos(50);
+    tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===i?'true':'false');});}
+  var io=('IntersectionObserver' in window)?new IntersectionObserver(function(e){if(e[0].isIntersecting){load(0);io.disconnect();}},{rootMargin:'400px'}):null;
+  io?io.observe(box):load(0);
+  tabs.forEach(function(t,k){t.addEventListener('click',function(){load(k);});});
+  var drag=false,sx=0,sy=0,dir=null;
+  function fromX(x){var r=box.getBoundingClientRect();setPos((x-r.left)/r.width*100);}
+  box.addEventListener('pointerdown',function(e){drag=true;dir=e.pointerType==='mouse'?'x':null;sx=e.clientX;sy=e.clientY;if(dir==='x'){fromX(e.clientX);box.setPointerCapture(e.pointerId);}});
+  box.addEventListener('pointermove',function(e){if(!drag)return;
+    if(!dir){var dx=Math.abs(e.clientX-sx),dy=Math.abs(e.clientY-sy);if(dx<6&&dy<6)return;dir=dx>dy?'x':'y';if(dir==='x')box.setPointerCapture(e.pointerId);}
+    if(dir==='x')fromX(e.clientX);});
+  function end(e){if(drag&&dir===null&&e&&e.type==='pointerup')fromX(e.clientX);drag=false;dir=null;}
+  box.addEventListener('pointerup',end);box.addEventListener('pointercancel',function(){drag=false;dir=null;});
+  rng.addEventListener('input',function(){setPos(+rng.value);});
+})();
+/* Скріншоти відгуків: збільшення */
+(function(){
+  var d=document.getElementById('zoom'),im=document.getElementById('zoomImg');
+  if(!d||typeof d.showModal!=='function'){return;}
+  document.querySelectorAll('.shot').forEach(function(b){b.addEventListener('click',function(){im.src=b.dataset.full;d.showModal();});});
+  d.querySelector('.zclose').addEventListener('click',function(){d.close();});
+  d.addEventListener('click',function(e){if(e.target===d)d.close();});
+})();
+(function(){
+  // GitHub Pages copy: заявка йде у форму skhody-lead на Netlify
+  var ENDPOINT='https://skhody-everest-ter.netlify.app/';
   function ck(n){const m=document.cookie.match('(?:^|; )'+n+'=([^;]*)');return m?decodeURIComponent(m[1]):'';}
   document.getElementById('page_url').value=location.href.split('#')[0];
   setTimeout(()=>{document.getElementById('fbp').value=ck('_fbp');let fc=ck('_fbc');const cl=new URLSearchParams(location.search).get('fbclid');if(!fc&&cl)fc='fb.1.'+Date.now()+'.'+cl;document.getElementById('fbc').value=fc;},1500);
@@ -498,8 +638,8 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
   let cur=1;const N=steps.length;
   function show(n){cur=n;steps.forEach(s=>s.hidden=+s.dataset.step!==n);back.hidden=n===1;err.textContent='';
     document.getElementById('qcount').textContent='Питання '+n+' з '+N;document.getElementById('qbar').style.width=(n/N*100)+'%';
-    const first=steps[n-1].querySelector('input:not([type=hidden])');if(first&&n===N)setTimeout(()=>first.focus(),50);}
-  f.addEventListener('change',e=>{const t=e.target;if(t.type!=='radio')return;
+    const first=steps[n-1].querySelector('input[type=text]');if(first&&n===N)setTimeout(()=>first.focus({preventScroll:true}),50);}
+  f.addEventListener('change',e=>{const t=e.target;if(t.type!=='radio'||t.name==='pref')return;
     setTimeout(()=>{
       if(t.name==='loc'&&t.value==='Інша область'){f.hidden=true;out.hidden=false;try{fbq('trackCustom','OutOfRegion');}catch(_){}return;}
       if(cur<N)show(cur+1);},180);});
@@ -511,24 +651,31 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
     let o='+380 ';if(d.length)o+=d.slice(0,2);if(d.length>2)o+=' '+d.slice(2,5);if(d.length>5)o+=' '+d.slice(5,7);if(d.length>7)o+=' '+d.slice(7,9);return {o,d};}
   ph.addEventListener('input',()=>{ph.value=fmt(ph.value).o;});
   ph.addEventListener('focus',()=>{if(!ph.value)ph.value='+380 ';});
-  function done(){f.hidden=true;const t=document.getElementById('thanks');t.hidden=false;t.scrollIntoView({block:'center'});}
+  function done(pref){
+    if(pref&&pref!=='Дзвінок'){document.getElementById('thanks-msg').textContent='Менеджер напише вам у '+pref+' на вказаний номер протягом 5 хвилин у робочий час. Відповідь прийде з тернопільського номера.';}
+    f.hidden=true;const t=document.getElementById('thanks');t.hidden=false;t.scrollIntoView({block:'center'});t.focus({preventScroll:true});}
   f.addEventListener('submit',e=>{
     e.preventDefault();
     const fd=new FormData(f);
     if(fd.get('loc')==='Інша область'||!fd.get('loc')){show(3);return;}
-    if(!String(fd.get('name')||'').trim()){err.textContent="Вкажіть ім'я, щоб менеджер знав, як до вас звертатися.";return;}
-    if(fmt(ph.value).d.length!==9){err.textContent='Перевірте номер: після +380 потрібно 9 цифр.';return;}
+    const nm=String(fd.get('name')||'').trim();
+    if(!nm){err.textContent="Вкажіть ім'я, щоб менеджер знав, як до вас звертатися.";document.getElementById('name').focus();return;}
+    if(fmt(ph.value).d.length!==9){err.textContent='Перевірте номер: після +380 потрібно 9 цифр.';ph.focus();return;}
     err.textContent='';
     document.getElementById('fbp').value=ck('_fbp');if(!document.getElementById('fbc').value)document.getElementById('fbc').value=ck('_fbc');
     const eid='lead-'+Date.now()+'-'+Math.random().toString(36).slice(2,8);
     document.getElementById('event_id').value=eid;
     const btn=document.getElementById('qsubmit');btn.disabled=true;btn.textContent='Надсилаємо…';
-    const body=new URLSearchParams(new FormData(f)).toString();
-    fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body}).catch(()=>{});
-    fetch('https://skhody-everest-ter.netlify.app/',{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body})
+    const data=new FormData(f);
+    // Спосіб зв'язку дописуємо до імені: форма в Netlify, таблиця й Telegram не потребують змін
+    const pref=String(data.get('pref')||'Дзвінок');data.delete('pref');
+    if(pref!=='Дзвінок')data.set('name',nm+' · '+pref);
+    const body=new URLSearchParams(data).toString();
+    // no-cors: відповідь непрозора, тому не перевіряємо r.ok — успіх = запит пішов
+    fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body})
       .then(()=>{
         try{fbq('track','Lead',{content_name:'skhody-consultation'},{eventID:eid});}catch(_){}
-        done();})
+        done(pref);})
       .catch(()=>{btn.disabled=false;btn.textContent='Отримати консультацію й бюджет';
         err.textContent='Не вдалося надіслати. Перевірте інтернет і спробуйте ще раз.';});
   });
