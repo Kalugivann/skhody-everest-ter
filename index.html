@@ -185,7 +185,7 @@ td:last-child{font-weight:600}
 .review{margin:0;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
 .review blockquote{margin:0;font-size:1rem;line-height:1.55}
 .review figcaption{font:700 1rem/1.2 var(--f-display)}
-.shots{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;align-items:start}
+.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:start}
 @media (max-width:860px){.shots{grid-template-columns:1fr 1fr}}
 .shot{padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--bg);cursor:zoom-in;display:block;width:100%}
 .shot img{width:100%;height:auto}
@@ -480,7 +480,6 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
     <div class="shots">
       <button type="button" class="shot" data-full="https://img2.creatium.app/disk2/fd/09/8b/874b04a8ae1eaaa753b78d328c015f3e0b/v_dguk.jpg"><img src="https://img2.creatium.app/disk2/fd/09/8b/874b04a8ae1eaaa753b78d328c015f3e0b/v_dguk.jpg" width="948" height="653" alt="Скріншот відгуку клієнта у Viber" loading="lazy" decoding="async"></button>
       <button type="button" class="shot" data-full="https://img2.creatium.app/disk2/b0/34/fa/0bee89a92ffe9eea68d7e915addcbac702/v_dguk_20_08.jpg"><img src="https://img2.creatium.app/disk2/b0/34/fa/0bee89a92ffe9eea68d7e915addcbac702/v_dguk_20_08.jpg" width="1080" height="822" alt="Скріншот відгуку клієнта у Viber" loading="lazy" decoding="async"></button>
-      <button type="button" class="shot" data-full="https://img2.creatium.app/disk2/fd/09/4e/72141e41b78475428245eb6447c78b84ff/v_dguki_3.jpg"><img src="https://img2.creatium.app/disk2/fd/09/4e/72141e41b78475428245eb6447c78b84ff/v_dguki_3.jpg" width="576" height="650" alt="Скріншот відгуку клієнта у Viber" loading="lazy" decoding="async"></button>
       <button type="button" class="shot" data-full="https://img2.creatium.app/disk2/02/b6/93/590d0f42df1740a2883c4dd43bade03f17/v_dguki_1.jpg"><img src="https://img2.creatium.app/disk2/02/b6/93/590d0f42df1740a2883c4dd43bade03f17/v_dguki_1.jpg" width="476" height="132" alt="Скріншот відгуку клієнта у Viber" loading="lazy" decoding="async"></button>
     </div>
     <p class="cap">Натисніть на скріншот, щоб відкрити його повністю.</p>
@@ -520,8 +519,7 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
       <p class="lead">4 короткі питання, менше хвилини. Менеджер зв'яжеться протягом 5 хвилин у робочий час — дзвінком або в месенджері, як вам зручніше.</p>
     </div>
     <div>
-      <form id="lead" name="skhody-lead" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
-        <input type="hidden" name="form-name" value="skhody-lead">
+      <form id="lead" name="skhody-lead" method="POST" novalidate>
         <p class="hp"><label>Не заповнюйте: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <div class="qhead"><span class="qcount" id="qcount">Питання 1 з 4</span><div class="qbar"><i id="qbar"></i></div></div>
         <fieldset class="qstep" data-step="1"><legend>На якому етапі ваш будинок?</legend><div class="qopts">
@@ -627,8 +625,7 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
   d.addEventListener('click',function(e){if(e.target===d)d.close();});
 })();
 (function(){
-  // GitHub Pages copy: заявка йде у форму skhody-lead на Netlify
-  var ENDPOINT='https://skhody-everest-ter.netlify.app/';
+  // Заявка йде у Google-таблицю «Сходи Еверест-Тер · Заявки» (Apps Script), звідти — у Telegram
   const SHEET_URL='https://script.google.com/macros/s/AKfycbzs2b6RCAOIOPjaPuvjLfwi8lDv__LTKoYJgiMxUiLG2u2BBl6_DDDPCvRtLDRoKBKA/exec'; // Google-таблиця «Сходи Еверест-Тер · Заявки» + Telegram
   function ck(n){const m=document.cookie.match('(?:^|; )'+n+'=([^;]*)');return m?decodeURIComponent(m[1]):'';}
   document.getElementById('page_url').value=location.href.split('#')[0];
@@ -662,19 +659,19 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
     const nm=String(fd.get('name')||'').trim();
     if(!nm){err.textContent="Вкажіть ім'я, щоб менеджер знав, як до вас звертатися.";document.getElementById('name').focus();return;}
     if(fmt(ph.value).d.length!==9){err.textContent='Перевірте номер: після +380 потрібно 9 цифр.';ph.focus();return;}
+    if(String(fd.get('bot-field')||'')){done('Дзвінок');return;}
     err.textContent='';
     document.getElementById('fbp').value=ck('_fbp');if(!document.getElementById('fbc').value)document.getElementById('fbc').value=ck('_fbc');
     const eid='lead-'+Date.now()+'-'+Math.random().toString(36).slice(2,8);
     document.getElementById('event_id').value=eid;
     const btn=document.getElementById('qsubmit');btn.disabled=true;btn.textContent='Надсилаємо…';
     const data=new FormData(f);
-    // Спосіб зв'язку дописуємо до імені: форма в Netlify, таблиця й Telegram не потребують змін
-    const pref=String(data.get('pref')||'Дзвінок');data.delete('pref');
+    // Спосіб зв'язку дописуємо до імені: таблиця й Telegram не потребують змін
+    const pref=String(data.get('pref')||'Дзвінок');data.delete('pref');data.delete('bot-field');
     if(pref!=='Дзвінок')data.set('name',nm+' · '+pref);
     const body=new URLSearchParams(data).toString();
-    fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body}).catch(()=>{});
-    // no-cors: відповідь непрозора, тому не перевіряємо r.ok — успіх = запит пішов
-    fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body})
+    // no-cors: відповідь непрозора, тому успіх = запит пішов
+    fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body})
       .then(()=>{
         try{fbq('track','Lead',{content_name:'skhody-consultation'},{eventID:eid});}catch(_){}
         done(pref);})
