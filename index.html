@@ -278,6 +278,15 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
 .out{background:var(--paper);color:var(--ink);border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:12px}
 .out p{color:var(--muted)}
 @media (prefers-reduced-motion:reduce){.qbar i{transition:none}}
+dialog#fm{padding:0;border:0;border-radius:10px;width:min(560px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow:auto;overscroll-behavior:contain}
+dialog#fm::backdrop{background:rgba(0,0,0,.7)}
+.fmhead{display:flex;gap:12px;align-items:flex-start;justify-content:space-between;padding:20px 20px 4px}
+.fmhead h2{font-size:clamp(1.15rem,4.5vw,1.45rem);margin:4px 0 6px;line-height:1.2}
+.fmhours{margin:0;font-size:.9rem;color:color-mix(in srgb,var(--steel-ink) 75%,transparent)}
+.fmclose{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid color-mix(in srgb,var(--steel-ink) 30%,transparent);background:transparent;color:inherit;font-size:1.1rem;cursor:pointer}
+#fmslot{padding:12px 20px 20px}
+body.fmopen{overflow:hidden}
+
 </style>
 </head>
 <body id="top">
@@ -299,7 +308,7 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
       <h1>Сходи під ключ від виробника в Тернополі — до 3 місяців, з ціною в договорі</h1>
       <p class="lead">Розраховуємо сходи під вашу чистову підлогу, отвір і графік ремонту. Каркас, дерево й перила робить один виконавець. Орієнтовний бюджет назвемо вже на безкоштовній консультації.</p>
       <div><a class="btn" href="#form">Отримати консультацію й орієнтовний бюджет</a></div>
-      <ul class="ticks"><li>Дзвінок протягом 5 хв у робочий час</li><li>Без зобов'язань</li><li>20 років гарантії на каркас</li></ul>
+      <ul class="ticks"><li>Дзвінок протягом 5 хв (пн–пт, 9:00–18:00)</li><li>Без зобов'язань</li><li>20 років гарантії на каркас</li></ul>
     </div>
     <div class="photo"><img src="https://img2.creatium.app/5c/8f/ee/74f36761536ad930105213168a2af1be85/1.jpg" alt="Сходи на металевому каркасі з дерев'яними сходинками від Еверест-Тер" fetchpriority="high" decoding="async"></div>
   </div>
@@ -417,7 +426,7 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
   <div class="wrap stack" style="gap:28px">
     <div class="stack"><p class="eyebrow">Як працюємо</p><h2>Від консультації до перил: 5 кроків</h2></div>
     <ol class="steps">
-      <li><span class="n">КРОК 1</span><h3>Заявка</h3><p>Відповідаєте на 4 короткі питання. Менеджер телефонує протягом 5 хв у робочий час.</p></li>
+      <li><span class="n">КРОК 1</span><h3>Заявка</h3><p>Відповідаєте на 4 короткі питання. Менеджер телефонує протягом 5 хв у робочий час: пн–пт з 9:00 до 18:00.</p></li>
       <li><span class="n">КРОК 2</span><h3>Консультація</h3><p>Етап ремонту, форма сходів, матеріали й орієнтовний бюджет.</p></li>
       <li><span class="n">КРОК 3</span><h3>Розрахунок і договір</h3><p>Креслення з урахуванням підлоги, отвору й теплої підлоги, 3D-ескіз за потреби. Ціну і строки фіксуємо в договорі.</p></li>
       <li><span class="n">КРОК 4</span><h3>Виготовлення</h3><p>На власному виробництві в Тернополі. Загалом до 3 місяців до монтажу.</p></li>
@@ -555,9 +564,10 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
         <li>Яка форма сходів підійде під отвір</li>
         <li>Орієнтовний бюджет і строки</li>
       </ul>
-      <p class="lead">4 короткі питання, менше хвилини. Менеджер зв'яжеться протягом 5 хвилин у робочий час — дзвінком або в месенджері, як вам зручніше.</p>
+      <p class="lead">4 короткі питання, менше хвилини. Менеджер зв'яжеться протягом 5 хвилин у робочий час (пн–пт, 9:00–18:00) — дзвінком або в месенджері, як вам зручніше.</p>
     </div>
-    <div>
+    <div id="fhost">
+      <div id="fcore">
       <form id="lead" name="skhody-lead" method="POST" novalidate>
         <p class="hp"><label>Не заповнюйте: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <div class="qhead"><span class="qcount" id="qcount">Питання 1 з 4</span><div class="qbar"><i id="qbar"></i></div></div>
@@ -570,6 +580,7 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
         <fieldset class="qstep" data-step="2" hidden><legend>Коли плануєте встановити сходи?</legend><div class="qopts">
             <label class="opt"><input type="radio" name="when" value="Протягом місяця"><span>Протягом місяця</span></label>
             <label class="opt"><input type="radio" name="when" value="За 1–3 місяці"><span>За 1–3 місяці</span></label>
+            <label class="opt"><input type="radio" name="when" value="За 3–6 місяців"><span>За 3–6 місяців</span></label>
             <label class="opt"><input type="radio" name="when" value="Пізніше"><span>Пізніше</span></label>
         </div></fieldset>
         <fieldset class="qstep" data-step="3" hidden><legend>Де розташований будинок?</legend><div class="qopts">
@@ -600,22 +611,26 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
       <div class="out" id="out" hidden>
         <h3>Дякуємо за інтерес до наших сходів</h3>
         <p>Ми виготовляємо й встановлюємо сходи лише в Тернопільській області, тому не зможемо приїхати до вас. Кожні сходи ми рахуємо й монтуємо на об'єкті самі, а за межі області наша бригада не виїжджає.</p>
-        <p>Якщо будинок усе ж в області, змініть відповідь.</p>
-        <div><button type="button" class="btn" id="outback">Змінити відповідь</button></div>
       </div>
       <div class="thanks" id="thanks" hidden tabindex="-1">
         <h3>Дякуємо, заявку отримали</h3>
-        <p id="thanks-msg">Менеджер зателефонує протягом 5 хвилин у робочий час з тернопільського номера. Будь ласка, візьміть слухавку, навіть якщо номер незнайомий: це ми з вашим бюджетом.</p>
-        <p>Якщо заявку залишено в неробочий час, зв'яжемося на початку наступного робочого дня.</p>
+        <p id="thanks-msg">Менеджер зателефонує протягом 5 хвилин у робочий час (пн–пт, 9:00–18:00) з тернопільського номера. Будь ласка, візьміть слухавку, навіть якщо номер незнайомий: це ми з вашим бюджетом.</p>
+        <p>Якщо заявку залишено ввечері, у вихідні чи свято, зв'яжемося наступного робочого дня після 9:00.</p>
+      </div>
       </div>
     </div>
   </div>
 </section>
 </main>
+<dialog id="fm" class="dark" aria-labelledby="fm-h">
+  <div class="fmhead"><div><p class="eyebrow">Безкоштовна консультація</p><h2 id="fm-h">Дізнайтеся орієнтовний бюджет на сходи</h2><p class="fmhours">Менеджер зв'яжеться за 5&nbsp;хв · <span style="white-space:nowrap">пн–пт, 9:00–18:00</span></p></div><button type="button" class="fmclose" aria-label="Закрити">✕</button></div>
+  <div id="fmslot"></div>
+</dialog>
 
 <footer>
   <div class="wrap">
     <div><b style="color:var(--ink)">Еверест-Тер</b> · виробництво сходів, Тернопіль · з 2008 року</div>
+    <div>Працюємо пн–пт з 9:00 до 18:00</div>
     <div>Працюємо по всій Тернопільській області</div>
     <div><a href="privacy.html" style="color:inherit">Політика конфіденційності</a></div>
   </div>
@@ -669,6 +684,18 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
   box.addEventListener('pointerup',end);box.addEventListener('pointercancel',function(){drag=false;dir=null;});
   rng.addEventListener('input',function(){setPos(+rng.value);});
 })();
+/* Поп-ап з формою: усі кнопки «до форми» відкривають її поверх сторінки */
+(function(){
+  var d=document.getElementById('fm'),slot=document.getElementById('fmslot'),host=document.getElementById('fhost'),core=document.getElementById('fcore');
+  if(!d||typeof d.showModal!=='function')return; // старі браузери — звичайна прокрутка до форми
+  function open(e){e.preventDefault();slot.appendChild(core);d.showModal();document.body.classList.add('fmopen');
+    try{d.querySelector('.fmclose').focus();}catch(_){}
+    try{fbq('trackCustom','FormOpen',{from:(e.currentTarget.textContent||'').trim().slice(0,40)});}catch(_){}}
+  document.querySelectorAll('a[href="#form"]').forEach(function(a){a.addEventListener('click',open);});
+  d.querySelector('.fmclose').addEventListener('click',function(){d.close();});
+  d.addEventListener('click',function(e){if(e.target===d)d.close();});
+  d.addEventListener('close',function(){host.appendChild(core);document.body.classList.remove('fmopen');});
+})();
 /* Скріншоти відгуків: збільшення */
 (function(){
   var d=document.getElementById('zoom'),im=document.getElementById('zoomImg');
@@ -686,28 +713,27 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
   try{const q=new URLSearchParams(location.search);["utm_source","utm_campaign","utm_content"].forEach(k=>{const v=q.get(k);if(v)document.getElementById(k).value=v;});}catch(e){}
   const f=document.getElementById('lead'),err=document.getElementById('err'),out=document.getElementById('out');
   const steps=[...f.querySelectorAll('.qstep')],back=document.getElementById('qback');
-  let cur=1;const N=steps.length;
+  let cur=1,locked=false;const N=steps.length;
   function show(n){cur=n;steps.forEach(s=>s.hidden=+s.dataset.step!==n);back.hidden=n===1;err.textContent='';
     document.getElementById('qcount').textContent='Питання '+n+' з '+N;document.getElementById('qbar').style.width=(n/N*100)+'%';
     const first=steps[n-1].querySelector('input[type=text]');if(first&&n===N)setTimeout(()=>first.focus({preventScroll:true}),50);}
   f.addEventListener('change',e=>{const t=e.target;if(t.type!=='radio'||t.name==='pref')return;
     setTimeout(()=>{
-      if(t.name==='loc'&&t.value==='Інша область'){f.hidden=true;out.hidden=false;try{fbq('trackCustom','OutOfRegion');}catch(_){}return;}
+      if(t.name==='loc'&&t.value==='Інша область'){locked=true;f.hidden=true;out.hidden=false;try{fbq('trackCustom','OutOfRegion');}catch(_){}return;}
       if(cur<N)show(cur+1);},180);});
   back.addEventListener('click',()=>{if(cur>1)show(cur-1);});
-  document.getElementById('outback').addEventListener('click',()=>{out.hidden=true;f.hidden=false;
-    f.querySelectorAll('input[name=loc]').forEach(i=>i.checked=false);show(3);});
   const ph=document.getElementById('phone');
   function fmt(v){let d=v.replace(/\D/g,'');if(d.startsWith('380'))d=d.slice(3);else if(d.startsWith('0'))d=d.slice(1);d=d.slice(0,9);
     let o='+380 ';if(d.length)o+=d.slice(0,2);if(d.length>2)o+=' '+d.slice(2,5);if(d.length>5)o+=' '+d.slice(5,7);if(d.length>7)o+=' '+d.slice(7,9);return {o,d};}
   ph.addEventListener('input',()=>{ph.value=fmt(ph.value).o;});
   ph.addEventListener('focus',()=>{if(!ph.value)ph.value='+380 ';});
   function done(pref){
-    if(pref&&pref!=='Дзвінок'){document.getElementById('thanks-msg').textContent='Менеджер напише вам у '+pref+' на вказаний номер протягом 5 хвилин у робочий час. Відповідь прийде з тернопільського номера.';}
+    if(pref&&pref!=='Дзвінок'){document.getElementById('thanks-msg').textContent='Менеджер напише вам у '+pref+' на вказаний номер протягом 5 хвилин у робочий час (пн–пт, 9:00–18:00). Відповідь прийде з тернопільського номера.';}
     f.hidden=true;const t=document.getElementById('thanks');t.hidden=false;t.scrollIntoView({block:'center'});t.focus({preventScroll:true});}
   f.addEventListener('submit',e=>{
     e.preventDefault();
     const fd=new FormData(f);
+    if(locked)return;
     if(fd.get('loc')==='Інша область'||!fd.get('loc')){show(3);return;}
     const nm=String(fd.get('name')||'').trim();
     if(!nm){err.textContent="Вкажіть ім'я, щоб менеджер знав, як до вас звертатися.";document.getElementById('name').focus();return;}
