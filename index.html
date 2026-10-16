@@ -488,6 +488,7 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
 
 <script>
 (function(){
+  const SHEET_URL='https://script.google.com/macros/s/AKfycbzs2b6RCAOIOPjaPuvjLfwi8lDv__LTKoYJgiMxUiLG2u2BBl6_DDDPCvRtLDRoKBKA/exec'; // Google-таблиця «Сходи Еверест-Тер · Заявки»
   function ck(n){const m=document.cookie.match('(?:^|; )'+n+'=([^;]*)');return m?decodeURIComponent(m[1]):'';}
   document.getElementById('page_url').value=location.href.split('#')[0];
   setTimeout(()=>{document.getElementById('fbp').value=ck('_fbp');let fc=ck('_fbc');const cl=new URLSearchParams(location.search).get('fbclid');if(!fc&&cl)fc='fb.1.'+Date.now()+'.'+cl;document.getElementById('fbc').value=fc;},1500);
@@ -523,6 +524,7 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
     document.getElementById('event_id').value=eid;
     const btn=document.getElementById('qsubmit');btn.disabled=true;btn.textContent='Надсилаємо…';
     const body=new URLSearchParams(new FormData(f)).toString();
+    fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body}).catch(()=>{});
     fetch('https://skhody-everest-ter.netlify.app/',{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body})
       .then(()=>{
         try{fbq('track','Lead',{content_name:'skhody-consultation'},{eventID:eid});}catch(_){}
