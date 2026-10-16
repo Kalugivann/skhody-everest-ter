@@ -194,6 +194,24 @@ dialog#zoom::backdrop{background:rgba(0,0,0,.75)}
 dialog#zoom img{max-width:100%;max-height:90vh;width:auto;height:auto;display:block}
 .zclose{position:absolute;top:8px;right:8px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.9);font-size:1.1rem;cursor:pointer}
 
+/* video */
+.vgrid{display:grid;grid-template-columns:repeat(2,minmax(0,340px));gap:16px}
+@media (max-width:640px){.vgrid{grid-template-columns:1fr 1fr;gap:10px}.vgrid .vitem figcaption{font-size:.9rem}}
+.vrow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+@media (max-width:900px){.vrow{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:min(70%,260px);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;-webkit-overflow-scrolling:touch}.vrow .vitem{scroll-snap-align:start}}
+.vitem{display:flex;flex-direction:column;gap:8px;margin:0}
+.vitem figcaption{font-weight:600;font-size:.98rem;line-height:1.3}
+.vitem figcaption small{display:block;font-weight:400;color:var(--muted);font-size:.88rem}
+.dark .vitem figcaption small{color:color-mix(in srgb,var(--steel-ink) 70%,transparent)}
+.vcard{position:relative;aspect-ratio:9/16;border-radius:10px;overflow:hidden;background:#0c1013}
+.vcard img,.vcard video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.vplay{position:absolute;inset:0;border:0;padding:0;background:transparent;cursor:pointer}
+.vplay::after{content:"";position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:rgba(255,255,255,.92);box-shadow:0 4px 18px rgba(0,0,0,.35)}
+.vplay::before{content:"";position:absolute;left:50%;top:50%;margin:-12px 0 0 -6px;border-style:solid;border-width:12px 0 12px 20px;border-color:transparent transparent transparent #1c2328;z-index:1}
+.vplay:focus-visible{outline:3px solid var(--oak);outline-offset:-3px}
+.vlen{position:absolute;right:8px;bottom:8px;font:600 .75rem/1 var(--f-mono);background:rgba(0,0,0,.65);color:#fff;padding:5px 7px;border-radius:4px;pointer-events:none}
+.vbadge{position:absolute;left:8px;top:8px;font:600 .72rem/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;background:var(--oak);color:var(--oak-ink);padding:6px 8px;border-radius:4px;pointer-events:none}
+
 /* faq */
 .faq{max-width:760px;display:flex;flex-direction:column;gap:0}
 details{border-top:1px solid var(--line);padding:4px 0}
@@ -302,6 +320,18 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
       <div class="pain"><q>Столяр звалює на зварника, зварник — на столяра</q><p>Коли сходи роблять кілька підрядників, за результат не відповідає ніхто.</p></div>
     </div>
     <div class="after"><p>Якщо відгукнулися хоча б два пункти, почніть з консультації. Одна розмова, і ви знатимете план для свого етапу ремонту та орієнтовний бюджет.</p><a class="btn" href="#form">Дізнатися план для мого будинку</a></div>
+  </div>
+</section>
+
+<!-- 3b WARM-UP VIDEOS -->
+<section class="dark" id="watch">
+  <div class="wrap stack" style="gap:24px">
+    <div class="stack"><p class="eyebrow">Подивіться перед консультацією</p><h2>Виробник чи майстер: що обрати для сходів</h2><p class="lead">Два коротких відео, після яких ви знатимете, що питати в будь-якого виконавця сходів, і де найчастіше втрачають гроші.</p></div>
+    <div class="vgrid">
+      <figure class="vitem"><div class="vcard"><img src="v/why30.jpg" alt="" loading="lazy" decoding="async"><button type="button" class="vplay" data-src="v/why30.mp4" data-name="why30" aria-label="Дивитися відео: За 30 секунд: чому сходи краще замовляти у виробника, а не в майстра"></button><span class="vlen">0:50</span></div><figcaption>За 30 секунд: чому сходи краще замовляти у виробника, а не в майстра</figcaption></figure>
+      <figure class="vitem"><div class="vcard"><img src="v/expert.jpg" alt="" loading="lazy" decoding="async"><button type="button" class="vplay" data-src="v/expert.mp4" data-name="expert" aria-label="Дивитися відео: Питання до експерта: що важливо знати до замовлення сходів"></button><span class="vlen">1:05</span></div><figcaption>Питання до експерта: що важливо знати до замовлення сходів</figcaption></figure>
+    </div>
+    <div><a class="btn" href="#form">Обговорити мої сходи з експертом</a></div>
   </div>
 </section>
 
@@ -469,7 +499,14 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
 <!-- 10b REVIEWS -->
 <section style="background:var(--paper)" id="reviews">
   <div class="wrap stack" style="gap:24px">
-    <div class="stack"><p class="eyebrow">Відгуки клієнтів</p><h2>Що пишуть власники будинків після монтажу</h2></div>
+    <div class="stack"><p class="eyebrow">Відгуки клієнтів</p><h2>Що кажуть і пишуть клієнти після монтажу</h2></div>
+    <div class="vrow">
+      <figure class="vitem"><div class="vcard"><img src="v/review1.jpg" alt="" loading="lazy" decoding="async"><button type="button" class="vplay" data-src="v/review1.mp4" data-name="review1" aria-label="Дивитися відео: Відгук клієнтки"></button><span class="vbadge">Відгук</span><span class="vlen">1:00</span></div><figcaption>Відгук клієнтки<small>Реальний відгук після монтажу</small></figcaption></figure>
+      <figure class="vitem"><div class="vcard"><img src="v/case1.jpg" alt="" loading="lazy" decoding="async"><button type="button" class="vplay" data-src="v/case1.mp4" data-name="case1" aria-label="Дивитися відео: Кейс 1: мало простору"></button><span class="vbadge">Кейс</span><span class="vlen">0:42</span></div><figcaption>Кейс 1: мало простору<small>Як вписали сходи у тісний отвір</small></figcaption></figure>
+      <figure class="vitem"><div class="vcard"><img src="v/case2.jpg" alt="" loading="lazy" decoding="async"><button type="button" class="vplay" data-src="v/case2.mp4" data-name="case2" aria-label="Дивитися відео: Кейс 2: дві сходинки"></button><span class="vbadge">Кейс</span><span class="vlen">0:43</span></div><figcaption>Кейс 2: дві сходинки<small>Рішення для невеликого перепаду</small></figcaption></figure>
+      <figure class="vitem"><div class="vcard"><img src="v/case3.jpg" alt="" loading="lazy" decoding="async"><button type="button" class="vplay" data-src="v/case3.mp4" data-name="case3" aria-label="Дивитися відео: Кейс 3: підвал"></button><span class="vbadge">Кейс</span><span class="vlen">0:54</span></div><figcaption>Кейс 3: підвал<small>Сходи в підвальне приміщення</small></figcaption></figure>
+      <figure class="vitem"><div class="vcard"><img src="v/case4.jpg" alt="" loading="lazy" decoding="async"><button type="button" class="vplay" data-src="v/case4.mp4" data-name="case4" aria-label="Дивитися відео: Кейс 4: артдекор"></button><span class="vbadge">Кейс</span><span class="vlen">0:51</span></div><figcaption>Кейс 4: артдекор<small>Металоконструкції для комерційного простору</small></figcaption></figure>
+    </div>
     <div class="reviews">
       <figure class="review"><blockquote>«Дякую Вам за хорошу роботу. Дружина задоволена, а це саме головне. Все було на вищому рівні. Дякую Вам і вашим працівникам. Надіюся на подальшу співпрацю!»</blockquote><figcaption>Олександр</figcaption></figure>
       <figure class="review"><blockquote>«Дякую вам за сходи на 2-ий поверх, дуже зручно ними переміщатися між поверхами. Все зроблено професійно і гарно, жодних зауважень не виникло. Ще раз дякую!»</blockquote><figcaption>Наталя</figcaption></figure>
@@ -585,6 +622,20 @@ body{margin:0}img{max-width:100%;display:block}[hidden]{display:none!important}
 <div class="sticky"><a class="btn" href="#form">Отримати консультацію й бюджет</a></div>
 
 <script>
+/* Відео: вантажимо лише після натискання, грає одне за раз */
+(function(){
+  var cur=null;
+  document.querySelectorAll('.vplay').forEach(function(b){b.addEventListener('click',function(){
+    var box=b.parentNode,v=document.createElement('video');
+    v.src=b.dataset.src;v.controls=true;v.playsInline=true;v.setAttribute('playsinline','');v.preload='auto';
+    var img=box.querySelector('img');if(img)v.poster=img.src;
+    box.querySelectorAll('.vlen,.vbadge').forEach(function(x){x.remove();});
+    b.replaceWith(v);if(img)img.remove();
+    v.addEventListener('play',function(){if(cur&&cur!==v)cur.pause();cur=v;});
+    v.play().catch(function(){});
+    try{fbq('trackCustom','VideoPlay',{video:b.dataset.name});}catch(_){}
+  });});
+})();
 /* До / після */
 (function(){
   var B='https://img2.creatium.app/disk2/';
