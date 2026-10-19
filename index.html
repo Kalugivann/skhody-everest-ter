@@ -799,6 +799,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-bet
     // no-cors: відповідь непрозора, тому успіх = запит пішов
     fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body})
       .then(()=>{
+        // Розширене зіставлення: телефон та ім'я (піксель сам хешує SHA-256 перед відправкою)
+        try{fbq('init','3220154751626599',{ph:'380'+fmt(ph.value).d,fn:nm.split(/\s+/)[0].toLowerCase()});}catch(_){}
         try{fbq('track','Lead',{content_name:'skhody-consultation'},{eventID:eid});}catch(_){}
         done(pref);})
       .catch(()=>{btn.disabled=false;btn.textContent='Отримати консультацію й бюджет';
