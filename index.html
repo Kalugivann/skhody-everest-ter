@@ -13,6 +13,10 @@
 <link rel="icon" type="image/png" sizes="64x64" href="img/favicon-64.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <meta name="theme-color" content="#f5f1ea">
+<!-- Microsoft Clarity -->
+<script>
+(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","z0n861gop0");
+</script>
 <!-- Meta Pixel -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -697,7 +701,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-bet
     b.replaceWith(v);if(img)img.remove();
     v.addEventListener('play',function(){if(cur&&cur!==v)cur.pause();cur=v;});
     v.play().catch(function(){});
-    try{fbq('trackCustom','VideoPlay',{video:b.dataset.name});}catch(_){}
+    try{fbq('trackCustom','VideoPlay',{video:b.dataset.name});}catch(_){}try{clarity('event','video_play');clarity('set','video',b.dataset.name);}catch(_){}
   });});
 })();
 /* До / після */
@@ -737,7 +741,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-bet
   if(!d||typeof d.showModal!=='function')return; // старі браузери — звичайна прокрутка до форми
   function open(e){e.preventDefault();slot.appendChild(core);d.showModal();document.body.classList.add('fmopen');
     try{d.querySelector('.fmclose').focus();}catch(_){}
-    try{fbq('trackCustom','FormOpen',{from:(e.currentTarget.textContent||'').trim().slice(0,40)});}catch(_){}}
+    try{fbq('trackCustom','FormOpen',{from:(e.currentTarget.textContent||'').trim().slice(0,40)});}catch(_){}try{clarity('event','form_open');}catch(_){}}
   document.querySelectorAll('a[href="#form"]').forEach(function(a){a.addEventListener('click',open);});
   d.querySelector('.fmclose').addEventListener('click',function(){d.close();});
   d.addEventListener('click',function(e){if(e.target===d)d.close();});
@@ -761,12 +765,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-bet
   const f=document.getElementById('lead'),err=document.getElementById('err'),out=document.getElementById('out');
   const steps=[...f.querySelectorAll('.qstep')],back=document.getElementById('qback');
   let cur=1,locked=false;const N=steps.length;
-  function show(n){cur=n;steps.forEach(s=>s.hidden=+s.dataset.step!==n);back.hidden=n===1;err.textContent='';
+  function show(n){cur=n;try{if(n>1)clarity('event','quiz_step_'+n);}catch(_){}steps.forEach(s=>s.hidden=+s.dataset.step!==n);back.hidden=n===1;err.textContent='';
     document.getElementById('qcount').textContent='Питання '+n+' з '+N;document.getElementById('qbar').style.width=(n/N*100)+'%';
     const first=steps[n-1].querySelector('input[type=text]');if(first&&n===N)setTimeout(()=>first.focus({preventScroll:true}),50);}
   f.addEventListener('change',e=>{const t=e.target;if(t.type!=='radio'||t.name==='pref')return;
     setTimeout(()=>{
-      if(t.name==='loc'&&t.value==='Інша область'){locked=true;f.hidden=true;out.hidden=false;try{fbq('trackCustom','OutOfRegion');}catch(_){}return;}
+      if(t.name==='loc'&&t.value==='Інша область'){locked=true;f.hidden=true;out.hidden=false;try{fbq('trackCustom','OutOfRegion');}catch(_){}try{clarity('event','out_of_region');}catch(_){}return;}
       if(cur<N)show(cur+1);},180);});
   back.addEventListener('click',()=>{if(cur>1)show(cur-1);});
   const ph=document.getElementById('phone');
@@ -801,7 +805,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-bet
       .then(()=>{
         // Розширене зіставлення: телефон та ім'я (піксель сам хешує SHA-256 перед відправкою)
         try{fbq('init','3220154751626599',{ph:'380'+fmt(ph.value).d,fn:nm.split(/\s+/)[0].toLowerCase()});}catch(_){}
-        try{fbq('track','Lead',{content_name:'skhody-consultation'},{eventID:eid});}catch(_){}
+        try{fbq('track','Lead',{content_name:'skhody-consultation'},{eventID:eid});}catch(_){}try{clarity('event','lead');clarity('upgrade','lead');}catch(_){}
         done(pref);})
       .catch(()=>{btn.disabled=false;btn.textContent='Отримати консультацію й бюджет';
         err.textContent='Не вдалося надіслати. Перевірте інтернет і спробуйте ще раз.';});
