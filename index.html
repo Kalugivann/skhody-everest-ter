@@ -764,8 +764,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-bet
   try{const q=new URLSearchParams(location.search);["utm_source","utm_campaign","utm_content"].forEach(k=>{const v=q.get(k);if(v)document.getElementById(k).value=v;});}catch(e){}
   const f=document.getElementById('lead'),err=document.getElementById('err'),out=document.getElementById('out');
   const steps=[...f.querySelectorAll('.qstep')],back=document.getElementById('qback');
-  let cur=1,locked=false;const N=steps.length;
-  function show(n){cur=n;try{if(n>1)clarity('event','quiz_step_'+n);}catch(_){}steps.forEach(s=>s.hidden=+s.dataset.step!==n);back.hidden=n===1;err.textContent='';
+  let cur=1,locked=false;const N=steps.length;const seen=new Set();
+  function show(n){cur=n;try{if(n>1)clarity('event','quiz_step_'+n);}catch(_){}if(n>1&&!seen.has(n)){seen.add(n);try{fbq('trackCustom','QuizStep',{step:n});}catch(_){}}steps.forEach(s=>s.hidden=+s.dataset.step!==n);back.hidden=n===1;err.textContent='';
     document.getElementById('qcount').textContent='Питання '+n+' з '+N;document.getElementById('qbar').style.width=(n/N*100)+'%';
     const first=steps[n-1].querySelector('input[type=text]');if(first&&n===N)setTimeout(()=>first.focus({preventScroll:true}),50);}
   f.addEventListener('change',e=>{const t=e.target;if(t.type!=='radio'||t.name==='pref')return;
