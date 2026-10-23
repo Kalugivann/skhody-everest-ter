@@ -85,7 +85,7 @@ td:first-child{font-weight:600}
  .prog{position:fixed;left:0;top:0;height:2px;background:var(--oak);z-index:21;width:0}
 }
 @media print{.bar,.prog{display:none}.wrap{display:block}}
-</style></head><body><div class="prog"></div><div class="bar"><div class="b"><img src="../img/mark-192.png" alt="">Еверест-Тер</div><a id="dl" href="guide.pdf" download hidden>Завантажити PDF</a></div><main class="wrap">
+</style></head><body><div class="prog"></div><div class="bar"><div class="b"><img src="../img/mark-192.png" alt="">Еверест-Тер</div><a id="dl" href="guide.pdf" download>Зберегти PDF</a></div><main class="wrap">
 <section class="page" style="padding:6mm 6mm 10mm;gap:4mm"><div class="photo" style="height:112mm"><img src="https://img2.creatium.app/5c/8f/ee/74f36761536ad930105213168a2af1be85/1.jpg" style="object-position:50% 62%"><div style="position:absolute;left:4mm;top:4mm;background:rgba(255,253,249,.94);border-radius:99px;padding:1.6mm 4.4mm 1.6mm 1.8mm;display:flex;gap:2.4mm;align-items:center"><img src="../img/mark-192.png" style="width:9mm;height:9mm;border-radius:50%"><div><div style="font:700 10pt/1.1 var(--fd)">Еверест-Тер</div><div style="font:500 7pt var(--fb);color:var(--muted)">сходи під ключ · Тернопіль</div></div></div><div style="position:absolute;right:4mm;bottom:4mm;background:var(--paper);border-radius:4mm;padding:2.6mm 3.6mm"><div style="font:700 9.5pt var(--fd)">5 хвилин читання</div><div style="font:400 7.6pt var(--fb);color:var(--muted)">+ чекліст розмірів отвору</div></div></div><div style="padding:0 4mm;display:flex;flex-direction:column;gap:3.6mm"><div class="pill"><i></i>Для будинку і дворівневої квартири</div><h1>Сходи на другий поверх: <em>9 рішень,</em> які треба ухвалити до стяжки</h1><div style="display:flex;gap:1.8mm;flex-wrap:wrap"><div class="tick">Виробництво в Тернополі з 2008 року</div><div class="tick">600+ проєктів</div></div></div></section>
 <section class="page" style="gap:3mm"><div class="eyebrow">Вступ</div>
 <h2>7 помилок, через які <em>сходи переробляють</em></h2>
@@ -149,7 +149,7 @@ td:first-child{font-weight:600}
   [25,50,75,100].forEach(function(t){if(p*100>=t-2&&!sent[t]){sent[t]=1;ev('GuideRead'+t)}});},{passive:true});
  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var n=pages.indexOf(e.target)+1;if(!sent['p'+n]){sent['p'+n]=1;try{clarity('set','guide_page_max',String(n))}catch(_){}}
   if(n===pages.length&&!sent.chk){sent.chk=1;ev('GuideChecklist')}}})},{threshold:.5});pages.forEach(function(p){io.observe(p)})}
- var a=document.getElementById('dl');if(a){fetch('guide.pdf',{method:'HEAD'}).then(function(r){if(r.ok)a.hidden=false}).catch(function(){});a.addEventListener('click',function(){ev('GuideDownload')});}
+ var a=document.getElementById('dl'),hasPdf=false;if(a){if(/FBAN|FBAV|Instagram/i.test(navigator.userAgent)){a.hidden=true}fetch('guide.pdf',{method:'HEAD'}).then(function(r){hasPdf=r.ok}).catch(function(){});a.addEventListener('click',function(e){ev('GuideDownload');if(!hasPdf){e.preventDefault();window.print()}})}
  try{var q=new URLSearchParams(location.search);['utm_source','utm_campaign','utm_content'].forEach(function(k){if(q.get(k))clarity('set',k,q.get(k))})}catch(_){}
 })();
 </script></body></html>
